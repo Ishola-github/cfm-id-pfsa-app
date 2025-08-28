@@ -10,6 +10,23 @@ Screening tools for PSAs
 ![Python](https://img.shields.io/badge/python-3.11-blue.svg)
 
 ---
+## 📑 Table of Contents
+- [🚀 Features](#-features)
+- [📦 Quickstart](#-quickstart)
+- [📂 Repository Structure](#-repository-structure)
+- [🏗️ System Architecture](#-system-architecture)
+- [📊 Roadmap](#-roadmap)
+
+- ---
+
+## 📊 Roadmap
+
+- [ ] Add extended PBPK model examples  
+- [ ] Integrate PFAS dataset from EPA CompTox  
+- [ ] Deploy Streamlit app to Hugging Face Spaces  
+- [ ] Add CI/CD testing for QSAR + PBPK pipeline  
+- [ ] Publish Docker image to DockerHub  
+
 
 *(Repository slug is `cfm-id-pfsa-app`, but this project is branded as the **PFAS Toxicity Prediction Platform**.)*
 
@@ -92,9 +109,21 @@ docker build -t pfas-toxicity-platform .
 
 # Run API + Streamlit UI
 docker run -p 8000:8000 -p 8501:8501 pfas-toxicity-platform
----
-
 ## 📂 Repository Structure
+
+```bash
+cfm-id-pfsa-app/
+├── app/                  # FastAPI application code
+│   ├── main.py           # Entry point for API
+│   ├── routes/           # API endpoints
+│   └── models/           # Data models & schemas
+├── streamlit_app/        # Streamlit UI
+├── worker/               # Celery tasks for async jobs
+├── r_service/            # R/httk integration for PBPK
+├── Dockerfile            # Container definition
+├── requirements.txt      # Python dependencies
+├── README.md             # Project documentation
+└── .github/workflows/    # GitHub Actions CI/CD configs
 
 
 ---
