@@ -1,4 +1,56 @@
 # cfm-id-pfsa-app
+
+Screening tools for PFAS — *update README to trigger CI*
+
+# PFAS Toxicity Platform  
+
+Regulatory-grade PFAS toxicity prediction combining **QSAR modeling**, **PBPK simulations**, and **computational fragmentation screening**.  
+Built with **FastAPI**, **Streamlit**, **R/httk**, and deployed via GitHub Actions + Kubernetes.
+
+---
+
+![Deploy App](https://github.com/Ishola-github/cfm-id-pfsa-app/actions/workflows/deploy.yml/badge.svg)
+[![codecov](https://codecov.io/gh/Ishola-github/cfm-id-pfsa-app/branch/main/graph/badge.svg)](https://codecov.io/gh/Ishola-github/cfm-id-pfsa-app)
+[![Docker Pulls](https://img.shields.io/docker/pulls/YOUR-DOCKERHUB-USERNAME/pfas-toxicity-platform)](https://hub.docker.com/r/YOUR-DOCKERHUB-USERNAME/pfas-toxicity-platform)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+![Python](https://img.shields.io/badge/python-3.11-blue.svg)
+
+---
+
+## 📑 Table of Contents
+- [🚀 Features](#-features)  
+- [📦 Quickstart](#-quickstart)  
+- [📂 Repository Structure](#-repository-structure)  
+- [🏗️ System Architecture](#-system-architecture)  
+- [📊 Roadmap](#-roadmap)  
+
+---
+
+## 🚀 Features
+- **QSAR Modeling**: Machine learning models with RDKit/Mordred descriptors.  
+- **PBPK Integration**: R `httk` package for exposure simulations.  
+- **Computational Fragmentation**: CFM-ID/MS2PIP integration for PFAS screening.  
+- **High-Throughput Screening**: ToxCast/Tox21 dataset support.  
+- **Regulatory Compliance**: OECD, EPA TSCA, and ICH M7 aligned reporting.  
+- **CI/CD Ready**: GitHub Actions + DockerHub + K8s deployment.  
+
+---
+
+## 📦 Quickstart
+
+Clone the repo and build with Docker:
+
+```bash
+git clone https://github.com/Ishola-github/cfm-id-pfsa-app.git
+cd cfm-id-pfsa-app
+
+# Build image
+docker build -t pfas-toxicity-platform .
+
+# Run API + Streamlit UI
+docker run -p 8000:8000 -p 8501:8501 pfas-toxicity-platform
+
+# cfm-id-pfsa-app
 Screening tools for PSAs
 “update README to trigger CI
 # PFAS Toxicity Platform
@@ -57,6 +109,27 @@ docker build -t pfas-toxicity-platform .
 
 # Run API + Streamlit UI
 docker run -p 8000:8000 -p 8501:8501 pfas-toxicity-platform
+
+cfm-id-pfsa-app/
+├── app/                # FastAPI application code
+│   ├── main.py         # Entry point for API
+│   ├── routes/         # API endpoints
+│   └── models/         # Data models & schemas
+├── streamlit_app/      # Streamlit UI
+├── worker/             # Celery tasks for async jobs
+├── r_service/          # R/httk integration for PBPK
+├── Dockerfile          # Container definition
+├── requirements.txt    # Python dependencies
+├── README.md           # Project documentation
+└── .github/workflows/  # GitHub Actions CI/CD configs
+flowchart LR
+    UI[Streamlit UI] -->|HTTP| API[FastAPI Service]
+    API -->|Tasks| Worker[Celery Worker]
+    Worker --> Models[QSAR/PBPK Models]
+    Worker --> RService[R Service (httk)]
+    API --> DB[(PostgreSQL / MongoDB)]
+    API --> Cache[(Redis)]
+    API --> Monitoring[Prometheus/Grafana]
 
 # PFAS Toxicity Platform
 # PFAS Toxicity Platform
