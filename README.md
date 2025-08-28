@@ -1,7 +1,7 @@
 # cfm-id-pfsa-app 
 ![Deploy App](https://github.com/Ishola-github/cfm-id-pfsa-app/actions/workflows/deploy.yml/badge.svg)
 [![codecov](https://codecov.io/gh/Ishola-github/cfm-id-pfsa-app/branch/main/graph/badge.svg)](https://codecov.io/gh/Ishola-github/cfm-id-pfsa-app)
-[![Docker Pulls](https://img.shields.io/docker/pulls/ishola-github/pfas-toxicity-platform)](https://hub.docker.com/r/ishola-github/pfas-toxicity-platform)
+[![Docker Pulls](https://img.shields.io/docker/pulls/sundayayobami/pfas-msms-tox)](https://hub.docker.com/r/sundayayobami/pfas-msms-tox)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 ![Python](https://img.shields.io/badge/python-3.11-blue.svg)
 
