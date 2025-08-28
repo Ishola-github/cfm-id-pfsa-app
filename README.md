@@ -1,21 +1,19 @@
-# cfm-id-pfsa-app  
-
-![Rebuild architecture diagram](https://github.com/Ishola-github/cfm-id-pfsa-app/actions/workflows/rebuild.yml/badge.svg)
-
-Screening tools for PFAS – *update README to trigger CI*
-
-# PFAS Toxicity Platform  
-
-Regulatory-grade PFAS toxicity prediction combining **QSAR modeling**, **PBPK simulations**, and **computational fragmentation screening**.  
-Built with **FastAPI**, **Streamlit**, **R/httk**, and deployed via GitHub Actions + Kubernetes.
-
----
-
+# cfm-id-pfsa-app 
 ![Deploy App](https://github.com/Ishola-github/cfm-id-pfsa-app/actions/workflows/deploy.yml/badge.svg)
 [![codecov](https://codecov.io/gh/Ishola-github/cfm-id-pfsa-app/branch/main/graph/badge.svg)](https://codecov.io/gh/Ishola-github/cfm-id-pfsa-app)
 [![Docker Pulls](https://img.shields.io/docker/pulls/YOUR-DOCKERHUB-USERNAME/pfas-toxicity-platform)](https://hub.docker.com/r/YOUR-DOCKERHUB-USERNAME/pfas-toxicity-platform)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 ![Python](https://img.shields.io/badge/python-3.11-blue.svg)
+
+---
+
+Screening tools for PFAS – *update README to trigger CI*
+
+# PFAS Toxicity Platform  
+
+Regulatory-grade PFAS toxicity prediction combining **QSAR modeling**, **PBPK simulations**,  
+and **computational fragmentation screening**.  
+Built with **FastAPI**, **Streamlit**, **R/httk**, and deployed via GitHub Actions + Kubernetes.
 
 ---
 ## 📑 Table of Contents
