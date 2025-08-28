@@ -2,6 +2,46 @@
 Screening tools for PSAs
 “update README to trigger CI
 # PFAS Toxicity Platform
+
+[![CI/CD](https://github.com/Ishola-github/cfm-id-pfsa-app/actions/workflows/deploy.yml/badge.svg)](https://github.com/Ishola-github/cfm-id-pfsa-app/actions/workflows/deploy.yml)
+[![codecov](https://codecov.io/gh/Ishola-github/cfm-id-pfsa-app/branch/main/graph/badge.svg)](https://codecov.io/gh/Ishola-github/cfm-id-pfsa-app)
+[![Docker Pulls](https://img.shields.io/docker/pulls/your-dockerhub-username/pfas-toxicity-platform)](https://hub.docker.com/r/your-dockerhub-username/pfas-toxicity-platform)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+![Python](https://img.shields.io/badge/python-3.11-blue.svg)
+
+---
+
+*(Repository slug is `cfm-id-pfsa-app`, but this project is branded as the **PFAS Toxicity Prediction Platform**.)*
+
+A SaaS platform for **regulatory-grade PFAS toxicity prediction** combining **QSAR modeling**, **PBPK simulations**, and **computational fragmentation screening**. Built with **FastAPI**, **Streamlit**, and **R/httk**, and deployed via GitHub Actions + Kubernetes.
+
+---
+
+## 🚀 Features
+- **QSAR Modeling** → Machine learning with RDKit + Mordred descriptors  
+- **PBPK Integration** → R `httk` package for exposure + kinetics simulations  
+- **Computational Fragmentation** → CFM-ID/MS2PIP pipelines for PSA screening  
+- **High-Throughput Screening** → ToxCast/Tox21 dataset integration  
+- **Regulatory Compliance** → Outputs aligned with OECD, EPA TSCA, ICH M7  
+- **Cloud-Ready** → Docker + K8s manifests + GitHub Actions CI/CD  
+
+---
+
+## 📦 Quickstart
+
+Clone and build with Docker:
+
+```bash
+git clone https://github.com/Ishola-github/cfm-id-pfsa-app.git
+cd cfm-id-pfsa-app
+
+# Build container
+docker build -t pfas-toxicity-platform .
+
+# Run API + Streamlit UI
+docker run -p 8000:8000 -p 8501:8501 pfas-toxicity-platform
+
+# PFAS Toxicity Platform
 # PFAS Toxicity Platform
 
 [![CI/CD](https://github.com/Ishola-github/cfm-id-pfsa-app/actions/workflows/deploy.yml/badge.svg)](https://github.com/Ishola-github/cfm-id-pfsa-app/actions/workflows/deploy.yml)
