@@ -16,23 +16,39 @@ Built with **FastAPI**, **Streamlit**, **R/httk**, and deployed via GitHub Actio
 ![Python](https://img.shields.io/badge/python-3.11-blue.svg)
 
 ---
-
 ## 📑 Table of Contents
-- [🚀 Features](#-features)  
-- [📦 Quickstart](#-quickstart)  
-- [📂 Repository Structure](#-repository-structure)  
-- [🏗️ System Architecture](#-system-architecture)  
-- [📊 Roadmap](#-roadmap)  
+- [🎨 Screenshot](#-screenshot)
+- [🚀 Features](#-features)
+- [📦 Quickstart](#-quickstart)
+- [📂 Repository Structure](#-repository-structure)
+- [🧩 System Architecture](#-system-architecture)
+- [📊 Roadmap](#-roadmap)
 
 ---
 
+## 🎨 Screenshot  
+![App Screenshot](docs/screenshot.png)  
+
+---
 ## 🚀 Features
-- **QSAR Modeling**: Machine learning models with RDKit/Mordred descriptors.  
-- **PBPK Integration**: R `httk` package for exposure simulations.  
-- **Computational Fragmentation**: CFM-ID/MS2PIP integration for PFAS screening.  
-- **High-Throughput Screening**: ToxCast/Tox21 dataset support.  
-- **Regulatory Compliance**: OECD, EPA TSCA, and ICH M7 aligned reporting.  
-- **CI/CD Ready**: GitHub Actions + DockerHub + K8s deployment.  
+---
+
+- 🧪 **QSAR Modeling**: Machine learning models with RDKit/Mordred descriptors.  
+- 📊 **PBPK Integration**: R `httk` package for exposure simulations.  
+- 🔬 **Computational Fragmentation**: CFM-ID/MS2PIP integration for PFAS screening.  
+- ⚡ **High-Throughput Screening**: ToxCast/Tox21 dataset support.  
+- 📑 **Regulatory Compliance**: OECD, EPA TSCA, and ICH M7 aligned reporting.  
+- 🔄 **CI/CD Ready**: GitHub Actions + DockerHub + K8s deployment.  
+
+## 🚀 Features
+---
+
+- 🧪 **QSAR Modeling**: Machine learning models with RDKit/Mordred descriptors.  
+- 📊 **PBPK Integration**: R `httk` package for exposure simulations.  
+- 🔬 **Computational Fragmentation**: CFM-ID/MS2PIP integration for PFAS screening.  
+- ⚡ **High-Throughput Screening**: ToxCast/Tox21 dataset support.  
+- 📑 **Regulatory Compliance**: OECD, EPA TSCA, and ICH M7 aligned reporting.  
+- 🔄 **CI/CD Ready**: GitHub Actions + DockerHub + K8s deployment.  
 
 ---
 
