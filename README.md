@@ -2,6 +2,14 @@
 Screening tools for PSAs
 “update README to trigger CI
 # PFAS Toxicity Platform
+# PFAS Toxicity Platform
+
+[![CI/CD](https://github.com/Ishola-github/cfm-id-pfsa-app/actions/workflows/deploy.yml/badge.svg)](https://github.com/Ishola-github/cfm-id-pfsa-app/actions/workflows/deploy.yml)
+[![codecov](https://codecov.io/gh/Ishola-github/cfm-id-pfsa-app/branch/main/graph/badge.svg)](https://codecov.io/gh/Ishola-github/cfm-id-pfsa-app)
+[![Docker Pulls](https://img.shields.io/docker/pulls/your-dockerhub-username/pfas-toxicity-platform)](https://hub.docker.com/r/your-dockerhub-username/pfas-toxicity-platform)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+![Python](https://img.shields.io/badge/python-3.11-blue.svg)
+
 
 [![CI/CD](https://github.com/Ishola-github/cfm-id-pfsa-app/actions/workflows/deploy.yml/badge.svg)](https://github.com/Ishola-github/cfm-id-pfsa-app/actions/workflows/deploy.yml)
 [![codecov](https://codecov.io/gh/Ishola-github/cfm-id-pfsa-app/branch/main/graph/badge.svg)](https://codecov.io/gh/Ishola-github/cfm-id-pfsa-app)
