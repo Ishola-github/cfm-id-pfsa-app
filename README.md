@@ -1,6 +1,8 @@
-# cfm-id-pfsa-app
+# cfm-id-pfsa-app  
 
-Screening tools for PFAS — *update README to trigger CI*
+![Rebuild architecture diagram](https://github.com/Ishola-github/cfm-id-pfsa-app/actions/workflows/rebuild.yml/badge.svg)
+
+Screening tools for PFAS – *update README to trigger CI*
 
 # PFAS Toxicity Platform  
 
