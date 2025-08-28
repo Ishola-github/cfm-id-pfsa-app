@@ -1,0 +1,22 @@
+name: Deploy App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Log in to Azure
+        run: |
+          echo "${{ secrets.AZURE_CLIENT_SECRET }}" > azure_secret.txt
+          echo "Azure client secret saved."
+
+      - name: Use GH Token
+        run: |
+          echo "GitHub token is: ${{ secrets.GH_TOKEN }}"
