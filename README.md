@@ -92,3 +92,28 @@ docker build -t pfas-toxicity-platform .
 
 # Run API + Streamlit UI
 docker run -p 8000:8000 -p 8501:8501 pfas-toxicity-platform
+---
+
+## 📂 Repository Structure
+
+
+---
+
+## 🏗️ System Architecture
+
+```mermaid
+flowchart LR
+    UI[Streamlit UI] -->|HTTP| API[FastAPI Service]
+    API -->|Tasks| Worker[Celery Worker]
+    Worker --> Models[QSAR/PBPK Models]
+    Worker --> RService[R Service (httk)]
+    API --> DB[(PostgreSQL / MongoDB)]
+    API --> Cache[(Redis)]
+    API --> Monitoring[Prometheus/Grafana]
+
+---
+
+✅ This way, the flow will be:  
+**Quickstart → Repository Structure → System Architecture → Roadmap.**
+
+Do you want me to also **update your README with clickable links** (like `[System Architecture](#-system-architecture)` in a Table of Contents at the top)? That way people can jump directly to the diagram.
