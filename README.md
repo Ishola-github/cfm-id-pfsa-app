@@ -40,16 +40,6 @@ Built with **FastAPI**, **Streamlit**, **R/httk**, and deployed via GitHub Actio
 - 📑 **Regulatory Compliance**: OECD, EPA TSCA, and ICH M7 aligned reporting.  
 - 🔄 **CI/CD Ready**: GitHub Actions + DockerHub + K8s deployment.  
 
-## 🚀 Features
----
-
-- 🧪 **QSAR Modeling**: Machine learning models with RDKit/Mordred descriptors.  
-- 📊 **PBPK Integration**: R `httk` package for exposure simulations.  
-- 🔬 **Computational Fragmentation**: CFM-ID/MS2PIP integration for PFAS screening.  
-- ⚡ **High-Throughput Screening**: ToxCast/Tox21 dataset support.  
-- 📑 **Regulatory Compliance**: OECD, EPA TSCA, and ICH M7 aligned reporting.  
-- 🔄 **CI/CD Ready**: GitHub Actions + DockerHub + K8s deployment.  
-
 ---
 
 ## 📦 Quickstart
