@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends curl \
 # App files
 WORKDIR /app
 COPY requirements.txt .fastapi==0.111.0
-uvicorn[standard]==0.30.0
+RUN pip install "uvicorn[standard]==0.30.0"
 
 
 RUN pip install --no-cache-dir -r requirements.txt
