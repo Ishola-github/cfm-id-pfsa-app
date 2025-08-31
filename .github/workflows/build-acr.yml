@@ -3,13 +3,12 @@ name: Build and Push to Docker Hub
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -36,9 +35,9 @@ jobs:
             sundayayobami/pfas-msms-tox:${{ github.sha }}
 
       - name: Verify push
-        run: echo "Docker image pushed successfully to Docker Hub"
+        run: echo "Docker image pushed successfully"
 EOF
 
-git add .github/workflows/build-acr.yml
-git commit -m "Fix YAML syntax error"
+git add .
+git commit -m "Fix YAML syntax on line 2"
 git push
