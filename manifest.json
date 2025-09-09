@@ -2597,7 +2597,7 @@
   },
   "files": {
     ".Rprofile": {
-      "checksum": "c6dfc1def00de16b2109aad814f695c4"
+      "checksum": "ac9bd2b4908c6f75703472ad7477300f"
     },
     "app.R": {
       "checksum": "af9e05252afb5965a9f3228a90801c11"
@@ -2649,6 +2649,9 @@
     },
     "PFAS_regulatory_23_smiles_descriptors.csv": {
       "checksum": "ffdc94243afe528c928dff26e66b5e81"
+    },
+    "README.md": {
+      "checksum": "ca5a168bbedc8a55fb3cac4553340737"
     }
   },
   "users": null
