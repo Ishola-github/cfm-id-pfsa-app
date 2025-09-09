@@ -2597,10 +2597,10 @@
   },
   "files": {
     ".Rprofile": {
-      "checksum": "47ef4226ebd280b66610ddca30623989"
+      "checksum": "c6dfc1def00de16b2109aad814f695c4"
     },
     "app.R": {
-      "checksum": "80b7d7c163e3cabde4fa15c0587311d3"
+      "checksum": "af9e05252afb5965a9f3228a90801c11"
     },
     "biomarker_report.xlsx": {
       "checksum": "faf21bfe0f34c645f72b608ce3b30186"
@@ -2614,8 +2614,11 @@
     "fill_pubchem_fields_v2.py": {
       "checksum": "4cfcb04b38c47f4d95548d57ac68f90c"
     },
+    "git-hub posit_connect_pfas_analysis.R": {
+      "checksum": "82c2038ebb91c33f4e7f6becc7b2b0b7"
+    },
     "pfas_analysis.R": {
-      "checksum": "b4ed3a6d2a9053cc6606437b490a8adc"
+      "checksum": "d8958a298a6e3e234b97b319dea19e98"
     },
     "PFAS_expanded_dataset.csv": {
       "checksum": "8b590387fbb550f7764a0a2ec2412fdd"

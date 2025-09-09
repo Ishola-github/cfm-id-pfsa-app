@@ -292,3 +292,96 @@ server <- function(input, output, session) {
 
 # Launch app
 shinyApp(ui = ui, server = server)
+
+
+
+
+
+
+
+
+
+
+system('git rev-parse --show-toplevel')  # should print the path of your local clone
+system('git remote -v')                  # should show origin -> https://github.com/ishola-github/cfm-id-pfsa-app.git
+
+
+system('git remote add origin https://github.com/ishola-github/cfm-id-pfsa-app.git')
+# or, if origin exists but points elsewhere:
+system('git remote set-url origin https://github.com/ishola-github/cfm-id-pfsa-app.git')
+
+
+
+stopifnot(file.exists("app.R"))  # must be TRUE (or use "shiny/app.R" + appDir="shiny")
+rsconnect::writeManifest(appDir = ".", appPrimaryDoc = "app.R")
+file.exists("manifest.json")     # should be TRUE
+
+
+
+
+# (optional) sanity checks
+system('git rev-parse --show-toplevel')
+system('git status --short')
+
+# if Git hasn’t been configured on this machine yet:
+system('git config --global user.name "Your Name"')
+system('git config --global user.email "you@example.com"')
+
+# add, commit, and push the manifest + app
+system('git add app.R manifest.json')
+system('git commit -m "Add manifest.json for Posit Connect"')
+system('git branch -M main')
+system('git push -u origin main')   # origin is https://github.com/ishola-github/cfm-id-pfsa-app.git
+
+
+
+
+
+
+
+# sanity: you’re at the repo root and manifest exists
+root <- system('git rev-parse --show-toplevel', intern = TRUE); setwd(root)
+stopifnot(file.exists("app.R"), file.exists("manifest.json"))
+
+# see remote
+system('git remote -v')
+
+# 1) fetch and replay your work on top of remote main (fixes "fetch first")
+system('git fetch origin')
+system('git pull --rebase origin main')
+
+# 2) stage & commit (ok if there's nothing to commit)
+system('git add app.R manifest.json')
+system('git commit -m "Add app.R + manifest.json for Posit Connect"')
+
+# 3) push
+system('git push -u origin main')
+
+
+
+
+
+system('git rebase --abort')
+system('git merge origin/main')
+# resolve any conflicts (if any), then:
+system('git commit -m "Merge origin/main"')
+system('git push -u origin main')
+
+
+
+
+system('git push --force-with-lease origin main')
+
+
+
+
+
+browseURL('https://github.com/Ishola-github/cfm-id-pfsa-app/tree/main')
+system('git log -1 --name-only')  # should list manifest.json and app.R
+
+
+
+
+
+
+
