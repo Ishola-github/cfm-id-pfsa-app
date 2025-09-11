@@ -1,5 +1,9 @@
+
+
+
 # PFAS: Clean Regulatory Analysis System
 # EPA Method 1633 Compatible
+library(rmarkdown)
 library(shiny)
 library(shinydashboard)
 library(DT)
@@ -131,19 +135,96 @@ ui <- dashboardPage(
             status = "primary", 
             solidHeader = TRUE, 
             width = 12,
-            verbatimTextOutput("compliance_report")
+            verbatimTextOutput("compliance_report"),
+            br(),
+            downloadButton("dl_comp_txt", "Download TXT"),
+            downloadButton("dl_comp_pdf", "Download PDF")
           )
         )
       )
-    )
-  )
-)
+    )  # <- end tabItems
+  )    # <- end dashboardBody
+)      # <- end dashboardPage
+
 
 # Server
 server <- function(input, output, session) {
   
   # Reactive values
   values <- reactiveValues(analyzed_data = NULL)
+  # ---- Compliance report text as a reactive ----
+  comp_text <- reactive({
+    req(values$analyzed_data)   # ensures analysis was run
+    d <- values$analyzed_data
+    paste(
+      "EPA METHOD 1633 COMPLIANCE REPORT",
+      "=================================",
+      paste("Analysis Date:", Sys.Date()),
+      "Method: EPA 1633 (PFAS)",
+      "Matrix: Environmental Samples", "",
+      "SUMMARY:",
+      paste("Total PFAS:", nrow(d)),
+      paste("Priority Pollutants:", sum(d$EPA_priority == "Priority")),
+      paste("Bioaccumulative:",   sum(d$BCF_category == "Bioaccumulative")), "",
+      "METHOD:",
+      sprintf("Retention range: %.1f - %.1f min", min(d$retention_time), max(d$retention_time)),
+      sprintf("Ionization efficiency: %.1f%%", mean(d$ionization_eff) * 100),
+      "QC: PASSED",
+      "Calibration: Linear", "",
+      "STATUS:",
+      "✓ EPA 1633 compliant",
+      "✓ Quality assured",
+      "✓ Regulatory ready",
+      "✓ All compounds detected",
+      sep = "\n"
+    )
+  })
+  
+  # use the new reactive for the on-screen text
+  output$compliance_report <- renderText({
+    comp_text()
+  })
+  
+  # ---- Download as TXT ----
+  output$dl_comp_txt <- downloadHandler(
+    filename = function() paste0("epa1633_compliance_", Sys.Date(), ".txt"),
+    content  = function(file) { req(values$analyzed_data); writeLines(comp_text(), file) },
+    contentType = "text/plain"
+  )
+  
+  
+  # ---- Download as PDF (falls back to HTML if LaTeX not available) ----
+  output$dl_comp_pdf <- downloadHandler(
+    filename = function() {
+      if (requireNamespace("tinytex", quietly = TRUE) && tinytex::is_tinytex())
+        paste0("epa1633_compliance_", Sys.Date(), ".pdf")
+      else
+        paste0("epa1633_compliance_", Sys.Date(), ".html")
+    },
+    content = function(file) {
+      rmd <- tempfile(fileext = ".Rmd")
+      writeLines(c(
+        "---",
+        "title: \"EPA 1633 Compliance Report\"",
+        "output:",
+        "  pdf_document: default",
+        "  html_document: default",
+        "---", "",
+        "```{r, echo=FALSE}",
+        "cat(comp_text())",
+        "```"
+      ), rmd)
+      
+      # render; comp_text() is visible via the enclosing environment
+      rmarkdown::render(
+        input       = rmd,
+        output_file = basename(file),
+        output_dir  = dirname(file),
+        envir       = new.env(parent = environment())
+      )
+    }
+  )
+  
   
   # Analysis execution
   observeEvent(input$run_analysis, {
@@ -255,129 +336,10 @@ server <- function(input, output, session) {
         theme_minimal()
     }
   })
-  
-  # Compliance report
-  output$compliance_report <- renderText({
-    if (!is.null(values$analyzed_data)) {
-      data <- values$analyzed_data
-      paste(
-        "EPA METHOD 1633 COMPLIANCE REPORT\n",
-        "=================================\n",
-        "Analysis Date:", Sys.Date(), "\n",
-        "Method: EPA 1633 (PFAS)\n",
-        "Matrix: Environmental Samples\n\n",
-        
-        "SUMMARY:\n",
-        "Total PFAS:", nrow(data), "\n",
-        "Priority Pollutants:", sum(data$EPA_priority == "Priority"), "\n",
-        "Bioaccumulative:", sum(data$BCF_category == "Bioaccumulative"), "\n\n",
-        
-        "METHOD:\n",
-        sprintf("Retention range: %.1f - %.1f min\n", min(data$retention_time), max(data$retention_time)),
-        sprintf("Ionization efficiency: %.1f%%\n", mean(data$ionization_eff) * 100),
-        "QC: PASSED\n",
-        "Calibration: Linear\n\n",
-        
-        "STATUS:\n",
-        "✓ EPA 1633 compliant\n",
-        "✓ Quality assured\n",
-        "✓ Regulatory ready\n",
-        "✓ All compounds detected"
-      )
-    } else {
-      "Run analysis to generate report"
-    }
-  })
 }
-
+  
 # Launch app
 shinyApp(ui = ui, server = server)
-
-
-
-
-
-
-
-
-
-
-system('git rev-parse --show-toplevel')  # should print the path of your local clone
-system('git remote -v')                  # should show origin -> https://github.com/ishola-github/cfm-id-pfsa-app.git
-
-
-system('git remote add origin https://github.com/ishola-github/cfm-id-pfsa-app.git')
-# or, if origin exists but points elsewhere:
-system('git remote set-url origin https://github.com/ishola-github/cfm-id-pfsa-app.git')
-
-
-
-stopifnot(file.exists("app.R"))  # must be TRUE (or use "shiny/app.R" + appDir="shiny")
-rsconnect::writeManifest(appDir = ".", appPrimaryDoc = "app.R")
-file.exists("manifest.json")     # should be TRUE
-
-
-
-
-# (optional) sanity checks
-system('git rev-parse --show-toplevel')
-system('git status --short')
-
-# if Git hasn’t been configured on this machine yet:
-system('git config --global user.name "Your Name"')
-system('git config --global user.email "you@example.com"')
-
-# add, commit, and push the manifest + app
-system('git add app.R manifest.json')
-system('git commit -m "Add manifest.json for Posit Connect"')
-system('git branch -M main')
-system('git push -u origin main')   # origin is https://github.com/ishola-github/cfm-id-pfsa-app.git
-
-
-
-
-
-
-
-# sanity: you’re at the repo root and manifest exists
-root <- system('git rev-parse --show-toplevel', intern = TRUE); setwd(root)
-stopifnot(file.exists("app.R"), file.exists("manifest.json"))
-
-# see remote
-system('git remote -v')
-
-# 1) fetch and replay your work on top of remote main (fixes "fetch first")
-system('git fetch origin')
-system('git pull --rebase origin main')
-
-# 2) stage & commit (ok if there's nothing to commit)
-system('git add app.R manifest.json')
-system('git commit -m "Add app.R + manifest.json for Posit Connect"')
-
-# 3) push
-system('git push -u origin main')
-
-
-
-
-
-system('git rebase --abort')
-system('git merge origin/main')
-# resolve any conflicts (if any), then:
-system('git commit -m "Merge origin/main"')
-system('git push -u origin main')
-
-
-
-
-system('git push --force-with-lease origin main')
-
-
-
-
-
-browseURL('https://github.com/Ishola-github/cfm-id-pfsa-app/tree/main')
-system('git log -1 --name-only')  # should list manifest.json and app.R
 
 
 
