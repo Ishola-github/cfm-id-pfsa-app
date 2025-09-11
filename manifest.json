@@ -2602,7 +2602,7 @@
   },
   "files": {
     ".Rprofile": {
-      "checksum": "e08b2a4e7c8e8b098c57cb6222261fc6"
+      "checksum": "fe9ee0857d7c10629e213b32b02328cc"
     },
     "app.R": {
       "checksum": "307fdb1aa6e6fed3fb1478dcffad0ad7"
@@ -2630,6 +2630,9 @@
     },
     "pfas_analysis.R": {
       "checksum": "d8958a298a6e3e234b97b319dea19e98"
+    },
+    "pfas_analysis_app.R": {
+      "checksum": "e1dfe17c8cc1ae7869dbc24af7066ce9"
     },
     "PFAS_expanded_dataset.csv": {
       "checksum": "8b590387fbb550f7764a0a2ec2412fdd"
@@ -2662,7 +2665,7 @@
       "checksum": "ffdc94243afe528c928dff26e66b5e81"
     },
     "README.md": {
-      "checksum": "ca5a168bbedc8a55fb3cac4553340737"
+      "checksum": "e1dfe17c8cc1ae7869dbc24af7066ce9"
     },
     "renv.lock": {
       "checksum": "a39274ade7c75136da017560b4c83306"
